@@ -9,13 +9,12 @@ class MiniYahtzee {
 
     private static void score(String nomination, String d1,
                               String d2, String d3) {
-        int score = 0;
-        ArrayList<Integer> dice = new ArrayList<>();
+         ArrayList<Integer> dice = new ArrayList<>();
         dice.add(Integer.parseInt(d1));
         dice.add(Integer.parseInt(d2));
         dice.add(Integer.parseInt(d3));
 
-        score = new Nomination().nomination(nomination, dice);
+        int score = new Nomination().nomination(nomination, dice);
         System.out.println("Score: " + score);
     }
 }
