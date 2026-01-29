@@ -1,4 +1,4 @@
-package yahtzee;
+package yahtzeePractice;
 
 import java.util.ArrayList;
 
