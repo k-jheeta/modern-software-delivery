@@ -2,7 +2,7 @@ package yahtzeePractice;
 
 import java.util.ArrayList;
 
-class MiniYahtzee {
+class MiniYahtzeePractice {
     public static void main(String[] args) {
         score(args[0], args[1], args[2], args[3]);
     }
