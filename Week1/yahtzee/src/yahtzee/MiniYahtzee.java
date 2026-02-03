@@ -12,12 +12,14 @@ class MiniYahtzee {
         int second = Integer.parseInt(d2);
         int third = Integer.parseInt(d3);
 
-        score = switch (nomination) {
-            case "ones" -> new Nomination().nominations(first, second, third, 1);
-            case "twos" -> new Nomination().nominations(first, second, third, 2);
-            case "threes" -> new Nomination().nominations(first, second, third, 3);
-            default -> score;
+        int nominationGroupToInt = switch (nomination) {
+            case "ones" -> 1;
+            case "twos" -> 2;
+            case "threes" -> 3;
+            default -> 0;
         };
+
+        score = new Nomination().nominations(first, second, third, nominationGroupToInt);
 
         return score;
     }
