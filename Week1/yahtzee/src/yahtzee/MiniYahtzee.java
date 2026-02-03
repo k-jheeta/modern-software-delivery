@@ -12,14 +12,16 @@ class MiniYahtzee {
         int second = Integer.parseInt(d2);
         int third = Integer.parseInt(d3);
 
-        if (nomination.equals("ones")) {
-            score = new Max().ones(first, second, third);
-        }
-        if (nomination.equals("twos")) {
-            score = new Max().twos(first, second, third);
-        }
-        if (nomination.equals("threes")) {
-            score = new Max().threes(first, second, third);
+        switch (nomination) {
+            case "ones":
+                score = new Max().ones(first, second, third);
+                break;
+                case "twos":
+                score = new Max().twos(first, second, third);
+                break;
+                case "threes":
+                score = new Max().threes(first, second, third);
+                break;
         }
 
         return score;
