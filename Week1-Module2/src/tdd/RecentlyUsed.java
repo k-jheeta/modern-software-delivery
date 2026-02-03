@@ -1,18 +1,19 @@
 package tdd;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecentlyUsed {
-  List<String> recentlyUsed = new ArrayList<>();
+public class RecentlyUsed<T> {
+  List<T> recentlyUsed = new ArrayList<>();
 
-  public List<String> recentlyUsedList() {
+  public List<T> recentlyUsedList() {
     return recentlyUsed;
   }
 
-  public void addRecentlyUsed(String item) {
-    if (item == null || item.isEmpty()) {
-        throw new IllegalArgumentException("Item cannot be null or empty");
+  public void addRecentlyUsed(T item) {
+    if (item == null) {
+        throw new IllegalArgumentException("Item cannot be null");
     }
     if (recentlyUsed.contains(item)) {
         recentlyUsed.remove(item);

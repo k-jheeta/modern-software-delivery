@@ -2,6 +2,7 @@ package tdd;
 
 import org.junit.Test;
 
+import java.io.File;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -12,70 +13,76 @@ public class RecentlyUsedListTest {
 
     @Test
     public void recentlyUsedListShouldBeEmpty(){
-        RecentlyUsed recentlyUsed = new RecentlyUsed();
+        RecentlyUsed<PhoneNumber> recentlyUsed = new RecentlyUsed<>();
 
-        List<String> list = recentlyUsed.recentlyUsedList();
+        List<PhoneNumber> list = recentlyUsed.recentlyUsedList();
 
         assertThat(list.size(), is(0));
     }
 
     @Test
     public void addItemsToRecentlyUsedList(){
-        RecentlyUsed recentlyUsed = new RecentlyUsed();
+        RecentlyUsed<PhoneNumber> recentlyUsed = new RecentlyUsed<>();
 
-        recentlyUsed.addRecentlyUsed("item1");
+        recentlyUsed.addRecentlyUsed(new PhoneNumber("1234567890"));
 
-        List<String> recentlyUsedList = recentlyUsed.recentlyUsedList();
+        List<PhoneNumber> recentlyUsedList = recentlyUsed.recentlyUsedList();
 
         assertThat(recentlyUsedList.size(), is(1));
     }
 
     @Test
     public void readItemsFromRecentlyUsedList(){
-        RecentlyUsed recentlyUsed = new RecentlyUsed();
+        File file = new File("file1.txt");
+        RecentlyUsed<File> recentlyUsed = new RecentlyUsed<>();
 
-        recentlyUsed.addRecentlyUsed("item1");
+        recentlyUsed.addRecentlyUsed(file);
 
-        List<String> list = recentlyUsed.recentlyUsedList();
+        List<File> recentlyUsedList = recentlyUsed.recentlyUsedList();
 
-        assertThat(list.size(), is(1));
-        assertThat(list.get(0), is("item1"));
+        assertThat(recentlyUsedList.size(), is(1));
+        assertThat(recentlyUsedList.get(0), is(file));
     }
 
     @Test
     public void mostRecentItemShouldBeFirstInList(){
-        RecentlyUsed recentlyUsed = new RecentlyUsed();
+        File file1 = new File("file1.txt");
+        File file2 = new File("file2.txt");
+        RecentlyUsed<File> recentlyUsed = new RecentlyUsed<>();
 
-        recentlyUsed.addRecentlyUsed("item1");
-        recentlyUsed.addRecentlyUsed("item2");
+        recentlyUsed.addRecentlyUsed(file1);
+        recentlyUsed.addRecentlyUsed(file2);
 
-        List<String> list = recentlyUsed.recentlyUsedList();
+        List<File> recentlyUsedList = recentlyUsed.recentlyUsedList();
 
-        assertThat(list.size(), is(2));
-        assertThat(list.get(0), is("item2"));
-        assertThat(list.get(1), is("item1"));
+        assertThat(recentlyUsedList.size(), is(2));
+        assertThat(recentlyUsedList.get(0), is(file2));
+        assertThat(recentlyUsedList.get(1), is(file1));
     }
 
     @Test
     public void itemsShouldBeUniqueAndDuplicatesAreMoved(){
-        RecentlyUsed recentlyUsed = new RecentlyUsed();
+        File file1 = new File("file1.txt");
+        File file2 = new File("file2.txt");
+        File file3 = new File("file3.txt");
+        RecentlyUsed<File> recentlyUsed = new RecentlyUsed<>();
 
-        recentlyUsed.addRecentlyUsed("item1");
-        recentlyUsed.addRecentlyUsed("item2");
-        recentlyUsed.addRecentlyUsed("item1");
-        recentlyUsed.addRecentlyUsed("item3");
+        recentlyUsed.addRecentlyUsed(file1);
+        recentlyUsed.addRecentlyUsed(file2);
+        recentlyUsed.addRecentlyUsed(file1);
+        recentlyUsed.addRecentlyUsed(file3);
 
-        List<String> list = recentlyUsed.recentlyUsedList();
+        List<File> recentlyUsedList = recentlyUsed.recentlyUsedList();
 
-        assertThat(list.size(), is(3));
-        assertThat(list.get(0), is("item3"));
-        assertThat(list.get(1), is("item1"));
-        assertThat(list.get(2), is("item2"));
+        assertThat(recentlyUsedList.size(), is(3));
+        assertThat(recentlyUsedList.get(0), is(file3));
+        assertThat(recentlyUsedList.get(1), is(file1));
+        assertThat(recentlyUsedList.get(2), is(file2));
     }
 
     @Test
     public void throwErrorWhenAddingNullItem(){
-        RecentlyUsed recentlyUsed = new RecentlyUsed();
+        RecentlyUsed<File> recentlyUsed = new RecentlyUsed<>();
 
         try {
             recentlyUsed.addRecentlyUsed(null);
