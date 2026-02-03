@@ -4,14 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecentlyUsed {
+  List<String> recentlyUsed = new ArrayList<>();
 
   public List<String> recentlyUsedList() {
-    return new ArrayList<>();
+    return recentlyUsed;
   }
 
-  public List<String> addRecentlyUsed(String item1) {
-    List<String> list = recentlyUsedList();
-    list.add(item1);
-    return list;
+  public void addRecentlyUsed(String item) {
+    if (recentlyUsed.contains(item)) {
+      recentlyUsed.remove(item);
+      recentlyUsed.add(0, item);
+    }
+    else {
+      recentlyUsed.add(0, item);
+    }
   }
 }
