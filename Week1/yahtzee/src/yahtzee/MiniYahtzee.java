@@ -7,7 +7,6 @@ class MiniYahtzee {
     }
 
     public static int score(String nomination, String d1, String d2, String d3) {
-        int score = 0;
         int first = Integer.parseInt(d1);
         int second = Integer.parseInt(d2);
         int third = Integer.parseInt(d3);
@@ -19,9 +18,7 @@ class MiniYahtzee {
             default -> 0;
         };
 
-        score = new Nomination().nominations(first, second, third, nominationGroupToInt);
-
-        return score;
+        return new Nomination().nominations(first, second, third, nominationGroupToInt);
     }
 }
 
