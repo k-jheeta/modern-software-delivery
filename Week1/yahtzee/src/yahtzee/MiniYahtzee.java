@@ -13,9 +13,9 @@ class MiniYahtzee {
         int third = Integer.parseInt(d3);
 
         score = switch (nomination) {
-            case "ones" -> new Max().ones(first, second, third, 1);
-            case "twos" -> new Max().twos(first, second, third, 2);
-            case "threes" -> new Max().threes(first, second, third, 3);
+            case "ones" -> new Nomination().nominations(first, second, third, 1);
+            case "twos" -> new Nomination().nominations(first, second, third, 2);
+            case "threes" -> new Nomination().nominations(first, second, third, 3);
             default -> score;
         };
 
@@ -23,32 +23,12 @@ class MiniYahtzee {
     }
 }
 
-class Ones {
-    int ones(int d1, int d2, int d3, int ones) {
+class Nomination {
+    int nominations(int d1, int d2, int d3, int n) {
         int sum = 0;
-        if (d1 == ones) sum += ones;
-        if (d2 == ones) sum += ones;
-        if (d3 == ones) sum += ones;
+        if (d1 == n) sum += n;
+        if (d2 == n) sum += n;
+        if (d3 == n) sum += n;
         return sum;
-    }
-}
-
-class Twos extends Ones {
-    int twos(int d1, int d2, int d3, int twos) {
-        int sum = 0;
-        if (d1 == twos) sum += twos;
-        if (d2 == twos) sum += twos;
-        if (d3 == twos) sum += twos;
-        return sum;
-    }
-}
-
-class Max extends Twos {
-    int threes(int d1, int d2, int d3, int threes) {
-        int s = 0;
-        if (d1 == threes) s += threes;
-        if (d2 == threes) s += threes;
-        if (d3 == threes) s += threes;
-        return s;
     }
 }
