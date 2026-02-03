@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -70,6 +71,17 @@ public class RecentlyUsedListTest {
         assertThat(list.get(0), is("item3"));
         assertThat(list.get(1), is("item1"));
         assertThat(list.get(2), is("item2"));
+    }
+
+    @Test
+    public void throwErrorWhenAddingNullItem(){
+        RecentlyUsed recentlyUsed = new RecentlyUsed();
+
+        try {
+            recentlyUsed.addRecentlyUsed(null);
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage(), containsString("Item cannot be null"));
+        }
     }
 
 }

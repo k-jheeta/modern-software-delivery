@@ -11,12 +11,14 @@ public class RecentlyUsed {
   }
 
   public void addRecentlyUsed(String item) {
-    if (recentlyUsed.contains(item)) {
-      recentlyUsed.remove(item);
-      recentlyUsed.add(0, item);
+    if (item == null || item.isEmpty()) {
+        throw new IllegalArgumentException("Item cannot be null or empty");
     }
-    else {
-      recentlyUsed.add(0, item);
+    if (recentlyUsed.contains(item)) {
+        recentlyUsed.remove(item);
+        recentlyUsed.add(0, item);
+    } else {
+        recentlyUsed.add(0, item);
     }
   }
 }
