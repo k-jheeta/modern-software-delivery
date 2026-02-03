@@ -16,4 +16,12 @@ public class RecentlyUsedListTest {
         assertThat(list.size(), is(0));
     }
 
+    @Test
+    public void recentlyUsedListShouldAddItem(){
+        List<String> list = new RecentlyUsed().addRecentlyUsed("item1");
+
+        assertThat(list.size(), is(1));
+        assertThat(list.get(0), is("item1"));
+    }
+
 }
