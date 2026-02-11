@@ -48,4 +48,16 @@ public class CameraTest {
         camera.pressShutter();
     }
 
+    @Test
+    public void pressingTheShutterWhenThePowerIsOnCopiesDataFromTheSensorToTheMemoryCard() {
+        Camera camera = new Camera(sensor);
+
+        context.checking(new Expectations() {{
+           exactly(1).of(sensor).readData();
+        }});
+
+        camera.powerOn();
+        camera.pressShutter();
+    }
+
 }
