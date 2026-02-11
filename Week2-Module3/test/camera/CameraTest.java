@@ -14,7 +14,7 @@ public class CameraTest {
 
     @Test
     public void switchingTheCameraOnPowersUpTheSensor() {
-         Camera camera = new Camera();
+         Camera camera = new Camera(sensor);
 
          context.checking(new Expectations() {{
              exactly(1).of(sensor).powerUp();
