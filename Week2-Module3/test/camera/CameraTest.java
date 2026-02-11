@@ -53,6 +53,7 @@ public class CameraTest {
         Camera camera = new Camera(sensor);
 
         context.checking(new Expectations() {{
+           exactly(1).of(sensor).powerUp();
            exactly(1).of(sensor).readData();
         }});
 

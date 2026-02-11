@@ -11,7 +11,9 @@ public class Camera {
     private boolean cameraSwitch = false;
 
     public void pressShutter() {
-        //Not implemented
+        if (cameraSwitch){
+            sensor.readData();
+        }
     }
 
     public void powerOn() {
