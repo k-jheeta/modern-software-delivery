@@ -8,16 +8,20 @@ public class Camera {
         this.sensor = sensor;
     }
 
+    private boolean cameraSwitch = false;
+
     public void pressShutter() {
-        // not implemented
+        //Not implemented
     }
 
     public void powerOn() {
         sensor.powerUp();
+        cameraSwitch = true;
     }
 
     public void powerOff() {
        sensor.powerDown();
+       cameraSwitch = false;
     }
 }
 
