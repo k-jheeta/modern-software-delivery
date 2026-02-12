@@ -15,7 +15,7 @@ public class CameraTest {
 
     @Test
     public void switchingTheCameraOnPowersUpTheSensor() {
-         Camera camera = new Camera(sensor);
+         Camera camera = new Camera(sensor, memoryCard);
 
          context.checking(new Expectations() {{
              exactly(1).of(sensor).powerUp();
@@ -26,7 +26,7 @@ public class CameraTest {
 
     @Test
     public void switchingTheCameraOffPowersDownTheSensor() {
-        Camera camera = new Camera(sensor);
+        Camera camera = new Camera(sensor, memoryCard);
 
         context.checking(new Expectations() {{
             exactly(1).of(sensor).powerDown();
@@ -37,7 +37,7 @@ public class CameraTest {
 
     @Test
     public void pressingTheShutterWhenThePowerIsOffDoesNothing() {
-        Camera camera = new Camera(sensor);
+        Camera camera = new Camera(sensor, memoryCard);
 
         context.checking(new Expectations() {{
             exactly(1).of(sensor).powerDown();
@@ -51,7 +51,7 @@ public class CameraTest {
 
     @Test
     public void pressingTheShutterWhenThePowerIsOnCopiesDataFromTheSensorToTheMemoryCard() {
-        Camera camera = new Camera(sensor);
+        Camera camera = new Camera(sensor, memoryCard);
 
         context.checking(new Expectations() {{
            exactly(1).of(sensor).powerUp();
