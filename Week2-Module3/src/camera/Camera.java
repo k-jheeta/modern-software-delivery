@@ -4,29 +4,36 @@ public class Camera {
 
     private final Sensor sensor;
     private final MemoryCard memoryCard;
+    private boolean cameraOn = false;
+    private boolean writing = false;
 
     public Camera( Sensor sensor, MemoryCard memoryCard){
         this.sensor = sensor;
         this.memoryCard = memoryCard;
     }
 
-    private boolean cameraSwitch = false;
-
     public void pressShutter() {
-        if (cameraSwitch){
-            byte[] data = sensor.readData();
-            memoryCard.write(data);
+        if (cameraOn){
+            writing = true;
+            writeDataFromSensorToMemoryCard();
         }
     }
 
     public void powerOn() {
         sensor.powerUp();
-        cameraSwitch = true;
+        cameraOn = true;
     }
 
     public void powerOff() {
-        sensor.powerDown();
-        cameraSwitch = false;
+        if(!writing){
+            sensor.powerDown();
+            cameraOn = false;
+        }
+    }
+
+    private void writeDataFromSensorToMemoryCard() {
+        byte[] data = sensor.readData();
+        memoryCard.write(data);
     }
 }
 

@@ -63,18 +63,19 @@ public class CameraTest {
         camera.pressShutter();
     }
 
-//    @Test
-//    public void ifDataIsCurrentlyBeingWrittenSwitchingCameraOffDoesNotPowerDownTheSensor() {
-//        Camera camera = new Camera(sensor);
-//
-//        context.checking(new Expectations() {{
-//            exactly(1).of(sensor).powerUp();
-//            exactly(1).of(sensor).readData();
-//            exactly(0).of(sensor).powerDown();
-//        }});
-//
-//        camera.powerOn();
-//        camera.pressShutter();
-//        camera.powerOff();
-//    }
+    @Test
+    public void ifDataIsCurrentlyBeingWrittenSwitchingCameraOffDoesNotPowerDownTheSensor() {
+        Camera camera = new Camera(sensor, memoryCard);
+
+        context.checking(new Expectations() {{
+            exactly(1).of(sensor).powerUp();
+            exactly(1).of(sensor).readData();
+            exactly(1).of(memoryCard).write(with(any(byte[].class)));
+            exactly(0).of(sensor).powerDown();
+        }});
+
+        camera.powerOn();
+        camera.pressShutter();
+        camera.powerOff();
+    }
 }
