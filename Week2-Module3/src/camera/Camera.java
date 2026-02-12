@@ -22,8 +22,8 @@ public class Camera {
     }
 
     public void powerOff() {
-       sensor.powerDown();
-       cameraSwitch = false;
+        sensor.powerDown();
+        cameraSwitch = false;
     }
 }
 

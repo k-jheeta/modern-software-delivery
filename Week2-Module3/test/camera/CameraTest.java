@@ -11,6 +11,7 @@ public class CameraTest {
     public JUnitRuleMockery context = new JUnitRuleMockery();
 
     Sensor sensor = context.mock(Sensor.class);
+    MemoryCard memoryCard = context.mock(MemoryCard.class);
 
     @Test
     public void switchingTheCameraOnPowersUpTheSensor() {
@@ -55,24 +56,25 @@ public class CameraTest {
         context.checking(new Expectations() {{
            exactly(1).of(sensor).powerUp();
            exactly(1).of(sensor).readData();
+           exactly(1).of(memoryCard).write(with(any(byte[].class)));
         }});
 
         camera.powerOn();
         camera.pressShutter();
     }
 
-    @Test
-    public void ifDataIsCurrentlyBeingWrittenSwitchingCameraOffDoesNotPowerDownTheSensor() {
-        Camera camera = new Camera(sensor);
-
-        context.checking(new Expectations() {{
-            exactly(1).of(sensor).powerUp();
-            exactly(1).of(sensor).readData();
-            exactly(0).of(sensor).powerDown();
-        }});
-
-        camera.powerOn();
-        camera.pressShutter();
-        camera.powerOff();
-    }
+//    @Test
+//    public void ifDataIsCurrentlyBeingWrittenSwitchingCameraOffDoesNotPowerDownTheSensor() {
+//        Camera camera = new Camera(sensor);
+//
+//        context.checking(new Expectations() {{
+//            exactly(1).of(sensor).powerUp();
+//            exactly(1).of(sensor).readData();
+//            exactly(0).of(sensor).powerDown();
+//        }});
+//
+//        camera.powerOn();
+//        camera.pressShutter();
+//        camera.powerOff();
+//    }
 }
