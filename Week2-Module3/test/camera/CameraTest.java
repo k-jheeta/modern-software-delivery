@@ -78,4 +78,20 @@ public class CameraTest {
         camera.pressShutter();
         camera.powerOff();
     }
+
+    @Test
+    public void onceWritingDataHasCompletedThenTheCameraPowersDownTheSensor() {
+        Camera camera = new Camera(sensor, memoryCard);
+
+        context.checking(new Expectations() {{
+            exactly(1).of(sensor).powerUp();
+            exactly(1).of(sensor).readData();
+            exactly(1).of(memoryCard).write(with(any(byte[].class)));
+            exactly(1).of(sensor).powerDown();
+        }});
+
+        camera.powerOn();
+        camera.pressShutter();
+        camera.writeComplete();
+    }
 }

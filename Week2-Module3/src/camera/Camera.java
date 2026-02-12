@@ -1,6 +1,6 @@
 package camera;
 
-public class Camera {
+public class Camera implements WriteListener {
 
     private final Sensor sensor;
     private final MemoryCard memoryCard;
@@ -34,6 +34,11 @@ public class Camera {
     private void writeDataFromSensorToMemoryCard() {
         byte[] data = sensor.readData();
         memoryCard.write(data);
+    }
+
+    @Override
+    public void writeComplete() {
+
     }
 }
 
