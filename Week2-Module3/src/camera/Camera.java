@@ -38,7 +38,8 @@ public class Camera implements WriteListener {
 
     @Override
     public void writeComplete() {
-
+        writing = false;
+        powerOff();
     }
 }
 
