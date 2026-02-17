@@ -4,14 +4,20 @@ import java.util.Iterator;
 
 public class FibonacciSequence implements Iterable<Integer> {
 
+  int intReturningOne = 2;
+
   public int calculateFibonacciSequenceTotal(int i) {
     if (i < 0) {
       throw new IllegalArgumentException("Not defined for indices < 0");
     }
-    if (i < 2) {
+    if (i < intReturningOne) {
       return 1;
     }
-    return calculateFibonacciSequenceTotal(i - 1) + calculateFibonacciSequenceTotal(i - 2);
+    return calculateFibonacciSequenceTotal(i - 1) + getAdditionalSum(i);
+  }
+
+  private int getAdditionalSum(int i) {
+    return calculateFibonacciSequenceTotal(i - 2);
   }
 
   public Iterator<Integer> iterator() {
