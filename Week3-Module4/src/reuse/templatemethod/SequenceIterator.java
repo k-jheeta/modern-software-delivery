@@ -17,7 +17,7 @@ public class SequenceIterator implements Iterator<Integer> {
 
     @Override
     public Integer next() {
-        return sequence.calculateSequenceTotal(index++, SequenceName.FIBONACCI);
+        return sequence.calculateSequenceTotal(index++, 2);
     }
 
     @Override
