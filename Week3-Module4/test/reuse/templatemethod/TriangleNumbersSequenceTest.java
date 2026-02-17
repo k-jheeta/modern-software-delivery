@@ -20,11 +20,11 @@ public class TriangleNumbersSequenceTest {
   }
 
   @Test
-  public void definesSubsequentTermsToBeTheSumOfThePreviousTwo() {
+  public void definesSubsequentTermsToBeNAdd1MultipliedByNAdd2DividedBy2() {
 
-    assertThat(sequence.term(2), is(2));
-    assertThat(sequence.term(3), is(3));
-    assertThat(sequence.term(4), is(5));
+    assertThat(sequence.term(2), is((3*4)/2));
+    assertThat(sequence.term(3), is((4*5)/2));
+    assertThat(sequence.term(4), is((5*6)/2));
   }
 
   @Test
