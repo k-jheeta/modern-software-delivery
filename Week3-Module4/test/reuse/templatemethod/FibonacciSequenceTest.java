@@ -15,23 +15,23 @@ public class FibonacciSequenceTest {
   @Test
   public void definesFirstTwoTermsToBeOne() {
 
-    assertThat(sequence.term(0), is(1));
-    assertThat(sequence.term(1), is(1));
+    assertThat(sequence.calculateFibonacciSequenceTotal(0), is(1));
+    assertThat(sequence.calculateFibonacciSequenceTotal(1), is(1));
   }
 
   @Test
   public void definesSubsequentTermsToBeTheSumOfThePreviousTwo() {
 
-    assertThat(sequence.term(2), is(2));
-    assertThat(sequence.term(3), is(3));
-    assertThat(sequence.term(4), is(5));
+    assertThat(sequence.calculateFibonacciSequenceTotal(2), is(2));
+    assertThat(sequence.calculateFibonacciSequenceTotal(3), is(3));
+    assertThat(sequence.calculateFibonacciSequenceTotal(4), is(5));
   }
 
   @Test
   public void isUndefinedForNegativeIndices() {
 
     try {
-      sequence.term(-1);
+      sequence.calculateFibonacciSequenceTotal(-1);
       fail("should have thrown exception");
     } catch (IllegalArgumentException e) {
       assertThat(e.getMessage(), containsString("Not defined for indices < 0"));
