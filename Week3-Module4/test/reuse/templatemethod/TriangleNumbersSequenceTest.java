@@ -13,18 +13,17 @@ public class TriangleNumbersSequenceTest {
   final TriangleNumbersSequence sequence = new TriangleNumbersSequence();
 
   @Test
-  public void definesFirstTwoTermsToBeOne() {
+  public void definesFirstTermToBeOne() {
 
     assertThat(sequence.calculateTriangleNumberSequenceTotal(0), is(1));
-    assertThat(sequence.calculateTriangleNumberSequenceTotal(1), is(1));
   }
 
   @Test
   public void definesSubsequentTermsToBeNAdd1MultipliedByNAdd2DividedBy2() {
 
-    assertThat(sequence.calculateTriangleNumberSequenceTotal(2), is((3*4)/2));
-    assertThat(sequence.calculateTriangleNumberSequenceTotal(3), is((4*5)/2));
-    assertThat(sequence.calculateTriangleNumberSequenceTotal(4), is((5*6)/2));
+    assertThat(sequence.calculateTriangleNumberSequenceTotal(2), is(6));
+    assertThat(sequence.calculateTriangleNumberSequenceTotal(3), is(10));
+    assertThat(sequence.calculateTriangleNumberSequenceTotal(4), is(15));
   }
 
   @Test
@@ -40,7 +39,7 @@ public class TriangleNumbersSequenceTest {
 
   @Test
   public void canBeIteratedThrough() {
-    assertThat(sequence, beginsWith(1, 1, 2, 3, 5));
+    assertThat(sequence, beginsWith(1, 3, 6, 10, 15));
   }
 
 }

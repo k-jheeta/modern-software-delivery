@@ -7,10 +7,10 @@ public class TriangleNumbersSequence implements Iterable<Integer>{
         if (i < 0) {
             throw new IllegalArgumentException("Not defined for indices < 0");
         }
-        if (i < 2) {
+        if (i < 1) {
             return 1;
         }
-        return calculateTriangleNumberSequenceTotal(i - 1) + calculateTriangleNumberSequenceTotal(i - 2);
+        return calculateTriangleNumberSequenceTotal(i - 1) + i + 1;
     }
 
     public Iterator<Integer> iterator() {
