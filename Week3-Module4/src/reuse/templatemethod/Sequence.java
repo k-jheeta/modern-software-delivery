@@ -1,6 +1,8 @@
 package reuse.templatemethod;
 
-public interface Sequence {
+import java.util.Iterator;
+
+public interface Sequence extends Iterable<Integer> {
     default int calculateSequenceTotal(int i, int intReturningOne) {
         if (i < 0) {
             throw new IllegalArgumentException("Not defined for indices < 0");
@@ -12,4 +14,9 @@ public interface Sequence {
     }
 
     int getAdditionalSum(int i);
+
+    @Override
+    default Iterator<Integer> iterator() {
+        return new SequenceIterator(this);
+    }
 }
