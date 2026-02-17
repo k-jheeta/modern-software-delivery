@@ -23,7 +23,7 @@ public class TriangleNumbersSequence implements Iterable<Integer>, Sequence{
 
         @Override
         public Integer next() {
-            return calculateSequenceTotal(index++, 1);
+            return calculateSequenceTotal(index++, SequenceName.TRIANGLE);
         }
 
         @Override
