@@ -15,22 +15,22 @@ public class TriangleNumbersSequenceTest {
   @Test
   public void definesFirstTermToBeOne() {
 
-    assertThat(sequence.calculateTriangleNumberSequenceTotal(0), is(1));
+    assertThat(sequence.calculateSequenceTotal(0, 1), is(1));
   }
 
   @Test
   public void definesSubsequentTermsToBeNAdd1MultipliedByNAdd2DividedBy2() {
 
-    assertThat(sequence.calculateTriangleNumberSequenceTotal(2), is(6));
-    assertThat(sequence.calculateTriangleNumberSequenceTotal(3), is(10));
-    assertThat(sequence.calculateTriangleNumberSequenceTotal(4), is(15));
+    assertThat(sequence.calculateSequenceTotal(2, 1), is(6));
+    assertThat(sequence.calculateSequenceTotal(3, 1), is(10));
+    assertThat(sequence.calculateSequenceTotal(4, 1), is(15));
   }
 
   @Test
   public void isUndefinedForNegativeIndices() {
 
     try {
-      sequence.calculateTriangleNumberSequenceTotal(-1);
+      sequence.calculateSequenceTotal(-1, 1);
       fail("should have thrown exception");
     } catch (IllegalArgumentException e) {
       assertThat(e.getMessage(), containsString("Not defined for indices < 0"));

@@ -2,21 +2,9 @@ package reuse.templatemethod;
 
 import java.util.Iterator;
 
-public class TriangleNumbersSequence implements Iterable<Integer>{
-
-    int intReturningOne = 1;
-
-    public int calculateTriangleNumberSequenceTotal(int i) {
-        if (i < 0) {
-            throw new IllegalArgumentException("Not defined for indices < 0");
-        }
-        if (i < intReturningOne) {
-            return 1;
-        }
-        return calculateTriangleNumberSequenceTotal(i - 1) + getAdditionalSum(i);
-    }
-
-    private int getAdditionalSum(int i) {
+public class TriangleNumbersSequence implements Iterable<Integer>, Sequence{
+    @Override
+    public int getAdditionalSum(int i) {
         return i + 1;
     }
 
@@ -35,7 +23,7 @@ public class TriangleNumbersSequence implements Iterable<Integer>{
 
         @Override
         public Integer next() {
-            return calculateTriangleNumberSequenceTotal(index++);
+            return calculateSequenceTotal(index++, 1);
         }
 
         @Override
