@@ -1,6 +1,6 @@
 package reuse.templatemethod;
 
-public class TriangleNumbersSequence implements Sequence{
+public class TriangleNumbersSequence implements Sequence {
     @Override
     public int intReturningOne() {
         return 1;
