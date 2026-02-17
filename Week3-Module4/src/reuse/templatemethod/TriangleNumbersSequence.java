@@ -2,33 +2,14 @@ package reuse.templatemethod;
 
 import java.util.Iterator;
 
-public class TriangleNumbersSequence implements Iterable<Integer>, Sequence{
+public class TriangleNumbersSequence implements Sequence{
+    @Override
+    public int intReturningOne() {
+        return 1;
+    }
+
     @Override
     public int getAdditionalSum(int i) {
         return i + 1;
-    }
-
-    public Iterator<Integer> iterator() {
-        return new SequenceIterator();
-    }
-
-    private class SequenceIterator implements Iterator<Integer> {
-
-        private int index = 0;
-
-        @Override
-        public boolean hasNext() {
-            return true;
-        }
-
-        @Override
-        public Integer next() {
-            return calculateSequenceTotal(index++, 1);
-        }
-
-        @Override
-        public void remove() {
-            throw new UnsupportedOperationException("remove is not implemented");
-        }
     }
 }

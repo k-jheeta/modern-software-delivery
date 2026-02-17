@@ -2,7 +2,7 @@ package reuse.templatemethod;
 
 import java.util.Iterator;
 
-public class SequenceIterator implements Iterator<Integer> {
+public final class SequenceIterator implements Iterator<Integer> {
     private final Sequence sequence;
     private int index = 0;
 
@@ -17,7 +17,7 @@ public class SequenceIterator implements Iterator<Integer> {
 
     @Override
     public Integer next() {
-        return sequence.calculateSequenceTotal(index++, 2);
+        return sequence.calculateSequenceTotal(index++);
     }
 
     @Override
