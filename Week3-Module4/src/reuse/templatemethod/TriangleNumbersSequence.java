@@ -1,7 +1,5 @@
 package reuse.templatemethod;
 
-import java.util.Iterator;
-
 public class TriangleNumbersSequence implements Sequence{
     @Override
     public int intReturningOne() {
