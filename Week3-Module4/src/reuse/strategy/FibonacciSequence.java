@@ -1,7 +1,5 @@
 package reuse.strategy;
 
-import reuse.templatemethod.Sequence;
-
 public class FibonacciSequence implements Sequence {
   @Override
   public int intReturningOne() {
