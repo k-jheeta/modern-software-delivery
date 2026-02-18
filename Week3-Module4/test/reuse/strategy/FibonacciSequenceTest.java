@@ -10,7 +10,7 @@ import static reuse.matchers.IterableBeginsWith.beginsWith;
 
 public class FibonacciSequenceTest {
 
-  final reuse.strategy.FibonacciSequence sequence = new FibonacciSequence();
+  final FibonacciSequence sequence = new FibonacciSequence();
 
   @Test
   public void definesFirstTwoTermsToBeOne() {
