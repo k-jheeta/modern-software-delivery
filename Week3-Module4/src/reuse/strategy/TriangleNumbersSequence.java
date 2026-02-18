@@ -1,39 +1,13 @@
 package reuse.strategy;
 
-import java.util.Iterator;
-
-public class TriangleNumbersSequence implements Iterable<Integer>{
-    public int calculateTriangleNumberSequenceTotal(int i) {
-        if (i < 0) {
-            throw new IllegalArgumentException("Not defined for indices < 0");
-        }
-        if (i < 1) {
-            return 1;
-        }
-        return calculateTriangleNumberSequenceTotal(i - 1) + i + 1;
+public class TriangleNumbersSequence implements Sequence {
+    @Override
+    public int intReturningOne() {
+        return 1;
     }
 
-    public Iterator<Integer> iterator() {
-        return new SequenceIterator();
-    }
-
-    private class SequenceIterator implements Iterator<Integer> {
-
-        private int index = 0;
-
-        @Override
-        public boolean hasNext() {
-            return true;
-        }
-
-        @Override
-        public Integer next() {
-            return calculateTriangleNumberSequenceTotal(index++);
-        }
-
-        @Override
-        public void remove() {
-            throw new UnsupportedOperationException("remove is not implemented");
-        }
+    @Override
+    public int getAdditionalSum(int i) {
+        return i + 1;
     }
 }
