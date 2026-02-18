@@ -1,6 +1,7 @@
 package reuse.strategy;
 
 import org.junit.Test;
+import reuse.matchers.IterableBeginsWith;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -10,7 +11,7 @@ import static reuse.matchers.IterableBeginsWith.beginsWith;
 
 public class TriangleNumbersSequenceTest {
 
-  final TriangleNumbersSequence sequence = new TriangleNumbersSequence();
+  final Sequence sequence = new Sequence(new TriangleNumbersSequence());
 
   @Test
   public void definesFirstTermToBeOne() {
@@ -39,7 +40,6 @@ public class TriangleNumbersSequenceTest {
 
   @Test
   public void canBeIteratedThrough() {
-    assertThat(sequence, beginsWith(1, 3, 6, 10, 15));
+    assertThat(sequence.iterator(), beginsWith(1, 3, 6, 10, 15));
   }
-
 }

@@ -2,23 +2,24 @@ package reuse.strategy;
 
 import java.util.Iterator;
 
-public interface Sequence extends Iterable<Integer> {
-    int intReturningOne();
+public class Sequence {
+    private final TriangleNumbersSequence triangleNumbersSequence;
 
-    int getAdditionalSum(int i);
+    public Sequence(TriangleNumbersSequence triangleNumbersSequence) {
+        this.triangleNumbersSequence = triangleNumbersSequence;
+    }
 
-    default int calculateSequenceTotal(int i) {
+    public int calculateSequenceTotal(int i) {
         if (i < 0) {
             throw new IllegalArgumentException("Not defined for indices < 0");
         }
-        if (i < intReturningOne()) {
+        if (i < triangleNumbersSequence.intReturningOne()) {
             return 1;
         }
-        return calculateSequenceTotal(i - 1) + getAdditionalSum(i);
+        return calculateSequenceTotal(i - 1) + triangleNumbersSequence.getAdditionalSum(i);
     }
 
-    @Override
-    default Iterator<Integer> iterator() {
+    public Iterator<Integer> iterator() {
         return new SequenceIterator(this);
     }
 }

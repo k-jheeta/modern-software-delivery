@@ -2,7 +2,7 @@ package reuse.strategy;
 
 import java.util.Iterator;
 
-public final class SequenceIterator implements Iterator<Integer> {
+public class SequenceIterator implements Iterator<Integer> {
     private final Sequence sequence;
     private int index = 0;
 
