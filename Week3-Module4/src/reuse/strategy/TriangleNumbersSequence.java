@@ -7,7 +7,7 @@ public class TriangleNumbersSequence implements Sequence {
     }
 
     @Override
-    public int getAdditionalSum(int i) {
+    public int getAdditionalSum(int i, CalculateSequence calculateSequence) {
         return i + 1;
     }
 }

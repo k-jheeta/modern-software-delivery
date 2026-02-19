@@ -10,37 +10,37 @@ import static reuse.matchers.IterableBeginsWith.beginsWith;
 
 public class FibonacciSequenceTest {
 
-    final CalculateSequence sequence = new CalculateSequence(new FibonacciSequence());
+    CalculateSequence sequence = new CalculateSequence(new FibonacciSequence());
 
     @Test
-  public void definesFirstTwoTermsToBeOne() {
+    public void definesFirstTwoTermsToBeOne() {
 
-    assertThat(sequence.calculateSequenceTotal(0), is(1));
-    assertThat(sequence.calculateSequenceTotal(1), is(1));
-  }
-
-  @Test
-  public void definesSubsequentTermsToBeTheSumOfThePreviousTwo() {
-
-    assertThat(sequence.calculateSequenceTotal(2), is(2));
-    assertThat(sequence.calculateSequenceTotal(3), is(3));
-    assertThat(sequence.calculateSequenceTotal(4), is(5));
-  }
-
-  @Test
-  public void isUndefinedForNegativeIndices() {
-
-    try {
-      sequence.calculateSequenceTotal(-1);
-      fail("should have thrown exception");
-    } catch (IllegalArgumentException e) {
-      assertThat(e.getMessage(), containsString("Not defined for indices < 0"));
+        assertThat(sequence.calculateSequenceTotal(0), is(1));
+        assertThat(sequence.calculateSequenceTotal(1), is(1));
     }
-  }
 
-  @Test
-  public void canBeIteratedThrough() {
-    assertThat(sequence, beginsWith(1, 1, 2, 3, 5));
-  }
+    @Test
+    public void definesSubsequentTermsToBeTheSumOfThePreviousTwo() {
+
+        assertThat(sequence.calculateSequenceTotal(2), is(2));
+        assertThat(sequence.calculateSequenceTotal(3), is(3));
+        assertThat(sequence.calculateSequenceTotal(4), is(5));
+    }
+
+    @Test
+    public void isUndefinedForNegativeIndices() {
+
+        try {
+            sequence.calculateSequenceTotal(-1);
+            fail("should have thrown exception");
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage(), containsString("Not defined for indices < 0"));
+        }
+    }
+
+    @Test
+    public void canBeIteratedThrough() {
+        assertThat(sequence, beginsWith(1, 1, 2, 3, 5));
+    }
 }
 

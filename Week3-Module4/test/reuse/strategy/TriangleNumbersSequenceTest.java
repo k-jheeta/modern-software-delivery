@@ -10,34 +10,34 @@ import static reuse.matchers.IterableBeginsWith.beginsWith;
 
 public class TriangleNumbersSequenceTest {
 
-  final CalculateSequence sequence = new CalculateSequence(new TriangleNumbersSequence());
+    final CalculateSequence sequence = new CalculateSequence(new TriangleNumbersSequence());
 
-  @Test
-  public void definesFirstTermToBeOne() {
+    @Test
+    public void definesFirstTermToBeOne() {
 
-    assertThat(sequence.calculateSequenceTotal(0), is(1));
-  }
-
-  @Test
-  public void definesSubsequentTermsToBeNAdd1MultipliedByNAdd2DividedBy2() {
-
-    assertThat(sequence.calculateSequenceTotal(2), is(6));
-    assertThat(sequence.calculateSequenceTotal(3), is(10));
-    assertThat(sequence.calculateSequenceTotal(4), is(15));
-  }
-
-  @Test
-  public void isUndefinedForNegativeIndices() {
-    try {
-      sequence.calculateSequenceTotal(-1);
-      fail("should have thrown exception");
-    } catch (IllegalArgumentException e) {
-      assertThat(e.getMessage(), containsString("Not defined for indices < 0"));
+        assertThat(sequence.calculateSequenceTotal(0), is(1));
     }
-  }
 
-  @Test
-  public void canBeIteratedThrough() {
-    assertThat(sequence, beginsWith(1, 3, 6, 10, 15));
-  }
+    @Test
+    public void definesSubsequentTermsToBeNAdd1MultipliedByNAdd2DividedBy2() {
+
+        assertThat(sequence.calculateSequenceTotal(2), is(6));
+        assertThat(sequence.calculateSequenceTotal(3), is(10));
+        assertThat(sequence.calculateSequenceTotal(4), is(15));
+    }
+
+    @Test
+    public void isUndefinedForNegativeIndices() {
+        try {
+            sequence.calculateSequenceTotal(-1);
+            fail("should have thrown exception");
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage(), containsString("Not defined for indices < 0"));
+        }
+    }
+
+    @Test
+    public void canBeIteratedThrough() {
+        assertThat(sequence, beginsWith(1, 3, 6, 10, 15));
+    }
 }
