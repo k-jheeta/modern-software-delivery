@@ -2,7 +2,7 @@ package reuse.strategy;
 
 import java.util.Iterator;
 
-public class Sequence {
+public class Sequence implements Iterable<Integer>{
     private final TriangleNumbersSequence triangleNumbersSequence;
 
     public Sequence(TriangleNumbersSequence triangleNumbersSequence) {
@@ -19,6 +19,7 @@ public class Sequence {
         return calculateSequenceTotal(i - 1) + triangleNumbersSequence.getAdditionalSum(i);
     }
 
+    @Override
     public Iterator<Integer> iterator() {
         return new SequenceIterator(this);
     }

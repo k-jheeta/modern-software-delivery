@@ -29,7 +29,6 @@ public class TriangleNumbersSequenceTest {
 
   @Test
   public void isUndefinedForNegativeIndices() {
-
     try {
       sequence.calculateSequenceTotal(-1);
       fail("should have thrown exception");
@@ -40,6 +39,6 @@ public class TriangleNumbersSequenceTest {
 
   @Test
   public void canBeIteratedThrough() {
-    assertThat(sequence.iterator(), beginsWith(1, 3, 6, 10, 15));
+    assertThat(sequence, beginsWith(1, 3, 6, 10, 15));
   }
 }
