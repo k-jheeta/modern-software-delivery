@@ -3,10 +3,10 @@ package reuse.strategy;
 import java.util.Iterator;
 
 public class SequenceIterator implements Iterator<Integer> {
-    private final Sequence sequence;
+    private final CalculateSequence sequence;
     private int index = 0;
 
-    public SequenceIterator(Sequence sequence) {
+    public SequenceIterator(CalculateSequence sequence) {
         this.sequence = sequence;
     }
 
